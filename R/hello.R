@@ -19,7 +19,7 @@
 #
 # install_github("Ivin-Int/MachineLearningForPowerBI")
 #
-# library(MachineLearningForPowerBI)
+# library(MachineLearningForPowerBI) ###
 
 ################################################################################
 
@@ -42,6 +42,7 @@ MLRegr <- function(FullDataSet, OutputType) {
   library(dplyr)
   library(lubridate)
   library(plotly)
+  library(htmlwidgets)
 
   # Load Data
 
@@ -117,9 +118,9 @@ MLRegr <- function(FullDataSet, OutputType) {
   r_sq <- 1 - (ss_res / ss_tot)
 
   # Plot
-  plot(mod_regress$fitted.values, mod_regress$residuals, xlab = "Fitted Values", ylab = "Residuals")
-
-  qqnorm(mod_regress$residuals, ylab = "Residual Quantiles")
+  # plot(mod_regress$fitted.values, mod_regress$residuals, xlab = "Fitted Values", ylab = "Residuals")
+  #
+  # qqnorm(mod_regress$residuals, ylab = "Residual Quantiles")
 
   if (OutputType == "finaldata") {return(final_Data)} else if (OutputType == "modelprecision") {return(ModelPrecisionsDF)}
   else if (OutputType == "coef") {return(coef_mod_regress)} else if (OutputType == "FullDemoForForecast") {return(FullDemoForForecast)}
@@ -199,6 +200,6 @@ ModelCoef <- MLRegr(FullDemoPath, "coef")
 Forecast  <- MLRegr(FullDemoPath,"FullDemoForForecast")
 
 ModelPlot <- MLPredictionPlot(Forecast)
-ModelPlot
+saveWidget(ModelPlot,"file.html")
 
 
