@@ -89,7 +89,7 @@ MLRegr <- function(FullDataSet, OutputType) {
   coef_mod_regress$OrdinaryCampaign <- coef_mod_regress$OrdinaryCampaign *50
   coef_mod_regress$OnlineCampaign <- coef_mod_regress$OrdinaryCampaign *10
 
-  coef_mod_regress <- coef_mod_regress[,c(1,7,6,8,2,3,9,4,10)]
+  coef_mod_regress <- coef_mod_regress[,c(1,6,8,4,2,3,9,7,10)]
 
   final_Data <- cbind(Actual=test$Amount,Predicted=result_regress)
   final_Data <- as.data.frame(final_Data)
@@ -107,7 +107,7 @@ MLRegr <- function(FullDataSet, OutputType) {
 
   TrainingSet <- 17520
 
-  ModelPrecisionsDF <- as.data.frame(cbind(adj_r_squared,testSet,TrainingSet))
+  ModelPrecisionsDF <- as.data.frame(cbind(rmse,adj_r_squared,testSet,TrainingSet))
 
   # Calculate rsquared manually
 
