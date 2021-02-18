@@ -71,8 +71,6 @@ MLRegr <- function(FullDataSet, OutputType) {
   # Transform Data
   FullDemoML <- FullDemoML[,c(-1,-2)]
 
-
-
   # Prepare Models
   split_index <- sample.split(FullDemoML$Amount,SplitRatio = 0.80)
 
@@ -103,9 +101,9 @@ MLRegr <- function(FullDataSet, OutputType) {
 
   adj_r_squared <- summary(mod_regress)$adj.r.squared
 
-  testSet <- 4380
+  testSet <- 3134
 
-  TrainingSet <- 17520
+  TrainingSet <- 12320
 
   ModelPrecisionsDF <- as.data.frame(cbind(rmse,adj_r_squared,testSet,TrainingSet))
 
